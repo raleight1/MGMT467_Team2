@@ -8,10 +8,10 @@ This file documents all unique AI prompts used during this project and includes 
 List each unique prompt you used (for coding, analysis, writing, etc.).
 Example format:
 
-1. “You are an analytics co‑pilot. Propose 5 high‑value, testable business questions about the Citi Bike dataset (tripduration, stations, user types, time-of-day/week). Return as bullets with suggested SQL hints.”
-2. “Write a BigQuery SQL query to find the most popular start and end stations in the \`bigquery-public-data.new_york_citibike.citibike_trips\` table. The query should also show how the popularity varies by time of day (morning, afternoon, evening, night) and user type (Customer, Subscriber). Use CTEs and include a window function to rank stations.”
-3. “Write a BigQuery SQL query to analyze how trip duration varies by user type (customer vs. subscriber) and time of day/week...”
-4. “Write a BigQuery SQL query to analyze the monthly trends in total trips and average trip duration over time...”
+1. “You are an analytics co‑pilot. Propose 5 high‑value, testable business questions about the E-Commerce dataset (distribution_centers events inventory_items order_items orders products thelook_ecommerce-table users). Return as bullets with suggested SQL hints.”
+2. “Write and execute a BigQuery SQL query to analyze trends in order volume and revenue over time for the first hypothesis, store the result in a DataFrame, then write and execute a BigQuery SQL query to find the most popular and profitable product categories for the second hypothesis, storing the result in a DataFrame, and finally write and execute a BigQuery SQL query to analyze customer behavior across different user segments for the third hypothesis, storing the result in a DataFrame.”
+3. "Write a BigQuery SQL query to find the most popular and profitable product categories in the \`bigquery-public-data.thelook_ecommerce.order_items\` and \`bigquery-public-data.thelook_ecommerce.products\` tables. The query should calculate the total number of order items and total revenue for each category. Use a window function to rank categories by popularity and profitability."
+4. "Write a BigQuery SQL query to analyze customer behavior across different user segments (e.g., new vs. returning users) using the \`bigquery-public-data.thelook_ecommerce.orders\` and \`bigquery-public-data.thelook_ecommerce.order_items\` tables. Calculate metrics like the number of users, average order value, and average purchase frequency for each segment. Define user segments based on the number of orders."
 
 
 ---
@@ -20,28 +20,30 @@ Example format:
 
 ### Example 1
 **Fail Prompt:**
-“Write a BigQuery SQL query to find the most popular start and end stations... show how the popularity varies by time of day... for July 2019.”
+"Write a BigQuery SQL query to find the top 10 best-selling products."
 
 **Issue:**
-The query returned no results, potentially due to filtering on a specific month (July 2019) where data might have been sparse or the time of day categorization was not capturing data as expected for that period.
+The prompt was too simple and didn't specify how to define "best-selling" (by quantity or revenue) or which tables to use in the e-commerce dataset, leading to an ambiguous or incorrect initial query.
 
 **Fixed Prompt:**
-“Are there specific stations that experience significantly longer or shorter trip durations on average? Write a BigQuery SQL query to calculate the average trip duration for each start station and compare it to the overall average using a window function.”
+"Write a BigQuery SQL query using the \`order_items\` and \`products\` tables to find the top 10 product categories by total revenue, including the category name and the calculated total revenue, and order the results in descending order of revenue."
 
 **Result:**
-Successfully identified stations with significantly different average trip durations, providing valuable insights into potential outliers or popular long-trip starting points.
+Produced a precise SQL query that correctly joins the necessary tables, aggregates data by category, calculates total revenue, and provides the top 10 categories ranked by profitability.
 
 ---
 
 ### Example 2
 **Fail Prompt:**
-"Generate Python code to predict Citi Bike demand."
+"Show me the sales data."
 
 **Issue:**
-The prompt was too broad and lacked necessary details about the data to be used for prediction, the desired model, or the specific prediction task (e.g., predicting demand at a specific station, overall demand, etc.).
+Extremely vague, didn't specify which aspects of sales data were needed (e.g., trends, categories, customer segments), the time frame, or the desired output format.
 
 **Fixed Prompt:**
-"Generate Python code using scikit-learn to build a time series model to predict daily total Citi Bike trips based on the historical data in the `df_hyp_c` DataFrame."
+"Write a BigQuery SQL query to analyze the monthly trends in total order volume and total revenue over the last two years from the \`orders\` and \`order_items\` tables in the e-commerce dataset, grouping the results by month and calculating the total number of orders and the sum of sale price for each month."
 
 **Result:**
-Produced a relevant Python code snippet that utilizes the available data and specifies a common machine learning library and task, providing a workable starting point for demand prediction.
+Generated a focused SQL query that provides a clear time-series view of sales performance, allowing for the identification of trends and seasonality.
+
+---
