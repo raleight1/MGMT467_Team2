@@ -8,7 +8,9 @@ Top Product Categories:
 The top five product categories—led by Outerwear & Coats, Jeans, and Sweaters—showed substantial quarter-over-quarter revenue growth. These categories were key drivers of overall business performance, suggesting successful merchandising and marketing alignment.
 Deep-Dive Findings:
 A closer look at the Outerwear & Coats category revealed that its success is largely concentrated in China, the United States, and Brazil, with Search as the dominant traffic source. Although returning customers did not primarily purchase from this category, they exhibited similar regional and channel patterns. The average order value for returning customers was approximately $86.51, demonstrating strong purchasing power within this segment.
+
 Recommendations
+
 Enhance Customer Retention: Develop loyalty and remarketing campaigns focused on converting first-time buyers into repeat customers, especially in high-performing regions and traffic channels.
 
 
