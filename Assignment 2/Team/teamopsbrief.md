@@ -21,6 +21,7 @@ The modeling goal was to achieve a fiscally responsible decision rule, translati
 | Model Variant | Scope | Key Features | Discriminative Power (AUC) | Change vs. Baseline |
 | :--- | :--- | :--- | :--- | :--- |
 | **Model A** (Baseline) | Global | Basic Features | **0.572** | N/A |
+| **Model B** | Engineered Uplift | Basic Features + Engineered | **0.771** | +19.9% |
 | **Model C** | Segmented (Hubs) | Operational Features | **0.662** | +15.7% |
 | **Model D Variant** | **Segmented + Engineered** | `dep_delay_hour_interaction`, `distance_bucket` | **0.870** | **+52.1%** |
 
